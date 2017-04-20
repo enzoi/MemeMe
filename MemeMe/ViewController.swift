@@ -10,10 +10,10 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, UITextFieldDelegate {
+
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var bottomTextField: UITextField!
-    @IBOutlet weak var cameraButton: UIBarButtonItem!
 
     let textFieldAttributes: [String:Any] = [
         NSForegroundColorAttributeName: UIColor.white,
@@ -22,28 +22,27 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         NSStrokeWidthAttributeName: -3,
         ]
     
+    var imagePicker: UIImagePickerController!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
         topTextField.attributedPlaceholder = NSAttributedString(string: "TOP", attributes: textFieldAttributes)
         topTextField.defaultTextAttributes = textFieldAttributes
         topTextField.textAlignment = .center
+        topTextField.backgroundColor = UIColor(white: 1, alpha: 0.0)
         
         bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM", attributes: textFieldAttributes)
         bottomTextField.defaultTextAttributes = textFieldAttributes
         bottomTextField.textAlignment = .center
+        bottomTextField.backgroundColor = UIColor(white: 1, alpha: 0.0)
         
         topTextField.delegate = self
         bottomTextField.delegate = self
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        subscribeToKeyboardNotifications()
         
     }
     
@@ -53,22 +52,21 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         unsubscribeFromKeyboardNotifications()
         
     }
-
+    
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
-        
-        let imagePicker = UIImagePickerController()
+    
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
         
     }
-
-    @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
-
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        imagePickerView.image = image
+        
+        imagePicker.dismiss(animated: true, completion: nil)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -79,7 +77,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         if textField == topTextField {
             topTextField.attributedPlaceholder = NSAttributedString(string: "TOP", attributes: textFieldAttributes)
-        } else {
+        } else { // bottomTextField
             bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM", attributes: textFieldAttributes)
         }
         
@@ -105,19 +103,23 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.cgRectValue.height
+    
     }
     
     func subscribeToKeyboardNotifications() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+    
     }
     
     func unsubscribeFromKeyboardNotifications() {
         
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+    
     }
+    
 
 }
 
