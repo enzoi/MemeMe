@@ -128,7 +128,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         // set up activity view controller
         let imageToShare = [ image ]
         let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        // activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         
         // exclude some activity types from the list (optional)
         // activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
@@ -142,8 +142,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     func generateMemedImage() -> UIImage {
         
         // TODO: Hide toolbar and navbar
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.navigationController?.setToolbarHidden(true, animated: false)
+        // self.navigationController?.setNavigationBarHidden(true, animated: false)
+        // self.navigationController?.setToolbarHidden(true, animated: false)
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -152,8 +152,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         UIGraphicsEndImageContext()
         
         // TODO: Show toolbar and navbar
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationController?.setToolbarHidden(false, animated: false)
+        // self.navigationController?.setNavigationBarHidden(false, animated: false)
+        // self.navigationController?.setToolbarHidden(false, animated: false)
         
         return memedImage
     }
