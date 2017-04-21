@@ -137,10 +137,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         present(activityViewController, animated: true, completion: nil)
         
     }
+
     
     func generateMemedImage() -> UIImage {
         
         // TODO: Hide toolbar and navbar
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setToolbarHidden(true, animated: false)
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -149,6 +152,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         UIGraphicsEndImageContext()
         
         // TODO: Show toolbar and navbar
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setToolbarHidden(false, animated: false)
         
         return memedImage
     }
