@@ -14,7 +14,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var bottomTextField: UITextField!
-
+    @IBOutlet weak var toolBar: UIToolbar!
+    
     let textFieldAttributes: [String:Any] = [
         NSForegroundColorAttributeName: UIColor.white,
         NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 40)!,
@@ -43,15 +44,23 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         topTextField.delegate = self
         bottomTextField.delegate = self
-        
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+        UIApplication.shared.isStatusBarHidden = false // hide status bar when saving image
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        UIApplication.shared.isStatusBarHidden = true
+    }
+
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
     
@@ -120,30 +129,57 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     }
     
+    struct Meme {
+        var topText: String
+        var bottomText: String
+        var originalImage: UIImage?
+        var memedImage: UIImage
+    }
+    
     @IBAction func shareImageButton(_ sender: Any) {
         
-        // image to share
-        let image = generateMemedImage()
+        if let originalImage = imagePickerView.image {
         
-        // set up activity view controller
-        let imageToShare = [ image ]
-        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
-        // activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+            let meme = Meme(topText: topTextField.text!,
+                            bottomText: bottomTextField.text!,
+                            originalImage: originalImage,
+                            memedImage: generateMemedImage())
+            
+            let activityViewController = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
+        
+            // present the view controller
+            present(activityViewController, animated: true, completion: nil)
+            
+        } else {
+            
+            let alert = UIAlertController(title: "Alert",
+                                          message: "Please select an image from photo library or camera",
+                                          preferredStyle: .alert)
+            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
+ 
+            })
+            
+            alert.addAction(okayAction)
+            present(alert, animated: true, completion: nil)
+        }
+
+        
+//        activityViewController.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
+//            if (completed) {
+//                self.dismiss(animated: true, completion: nil)
+//            }
+//        }
         
         // exclude some activity types from the list (optional)
         // activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
         
-        // present the view controller
-        present(activityViewController, animated: true, completion: nil)
-        
     }
-
     
     func generateMemedImage() -> UIImage {
         
         // TODO: Hide toolbar and navbar
-        // self.navigationController?.setNavigationBarHidden(true, animated: false)
-        // self.navigationController?.setToolbarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.toolBar.isHidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -152,8 +188,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         UIGraphicsEndImageContext()
         
         // TODO: Show toolbar and navbar
-        // self.navigationController?.setNavigationBarHidden(false, animated: false)
-        // self.navigationController?.setToolbarHidden(false, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.toolBar.isHidden = false
+        // UIApplication.shared.isStatusBarHidden = false
         
         return memedImage
     }

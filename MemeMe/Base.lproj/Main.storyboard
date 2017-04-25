@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZGF-Nz-Tft">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZGF-Nz-Tft">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,23 +26,26 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="628"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="Kys-hC-0tX">
-                                <rect key="frame" x="192" y="94" width="30" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="XHh-nr-77Z">
-                                <rect key="frame" x="192" y="632" width="30" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AHz-sU-iU3">
-                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="Kys-hC-0tX">
+                                <rect key="frame" x="50" y="94" width="314" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="mhf-w6-wa8"/>
+                                    <constraint firstAttribute="height" constant="40" id="cy4-Kv-HQF"/>
                                 </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="XHh-nr-77Z">
+                                <rect key="frame" x="50" y="622" width="314" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="oIx-eh-k2D"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHz-sU-iU3">
+                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <items>
                                     <barButtonItem title="Album" id="QvL-2e-rdE">
                                         <connections>
@@ -50,22 +54,31 @@
                                     </barButtonItem>
                                     <barButtonItem systemItem="camera" id="kux-LL-xOk"/>
                                 </items>
+                                <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Zah-CB-qkq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="10" id="0Hr-C3-kFt"/>
                             <constraint firstItem="AHz-sU-iU3" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="0In-Au-R99"/>
-                            <constraint firstItem="Zah-CB-qkq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1fb-BI-BTF"/>
                             <constraint firstItem="Kys-hC-0tX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Uq-IF-M14"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4zM-hk-HHj"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="-44" id="9gV-wk-Xgt"/>
+                            <constraint firstAttribute="trailing" secondItem="Zah-CB-qkq" secondAttribute="trailing" id="9kO-W2-Qz5"/>
                             <constraint firstAttribute="trailing" secondItem="AHz-sU-iU3" secondAttribute="trailing" id="E46-bI-PV6"/>
+                            <constraint firstItem="XHh-nr-77Z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="GXv-xX-gFB"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HM9-dY-TuF"/>
                             <constraint firstItem="AHz-sU-iU3" firstAttribute="top" secondItem="XHh-nr-77Z" secondAttribute="bottom" constant="30" id="IkW-Uz-CXH"/>
-                            <constraint firstItem="Zah-CB-qkq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="VvX-dw-qsP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Kys-hC-0tX" secondAttribute="trailing" constant="30" id="JdC-Hy-aoh"/>
+                            <constraint firstAttribute="trailing" secondItem="Zah-CB-qkq" secondAttribute="trailing" id="PA3-NP-066"/>
                             <constraint firstItem="XHh-nr-77Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W5w-e2-Y3l"/>
-                            <constraint firstItem="Kys-hC-0tX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="aiu-9A-bDN"/>
+                            <constraint firstAttribute="trailing" secondItem="Zah-CB-qkq" secondAttribute="trailing" id="a5R-l9-Yqz"/>
                             <constraint firstAttribute="trailing" secondItem="AHz-sU-iU3" secondAttribute="trailing" id="ajf-fI-9TN"/>
-                            <constraint firstItem="Zah-CB-qkq" firstAttribute="leading" secondItem="AHz-sU-iU3" secondAttribute="leading" id="jEv-GT-7mr"/>
+                            <constraint firstItem="Kys-hC-0tX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="bKg-xK-Nds"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hcg-L1-506"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kLY-uA-eYX"/>
+                            <constraint firstItem="Kys-hC-0tX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="vH2-ng-B5b"/>
                             <constraint firstItem="AHz-sU-iU3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xHD-Ei-b4l"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XHh-nr-77Z" secondAttribute="trailing" constant="30" id="ycT-Xw-5eL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZHt-SN-aw3">
@@ -79,12 +92,13 @@
                     <connections>
                         <outlet property="bottomTextField" destination="XHh-nr-77Z" id="Ctp-AX-Kuu"/>
                         <outlet property="imagePickerView" destination="Zah-CB-qkq" id="g6u-a4-7P2"/>
+                        <outlet property="toolBar" destination="AHz-sU-iU3" id="ClE-1M-w8X"/>
                         <outlet property="topTextField" destination="Kys-hC-0tX" id="OIp-gI-WZQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1075.3623188405797" y="138.58695652173915"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Y8v-jm-JSc">
