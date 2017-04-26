@@ -15,7 +15,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var toolBar: UIToolbar!
-    @IBOutlet weak var cameraButton: UIToolbar!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     let textFieldAttributes: [String:Any] = [
         NSForegroundColorAttributeName: UIColor.white,
@@ -46,6 +46,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         topTextField.delegate = self
         bottomTextField.delegate = self
 
+        // The Camera button is disabled when app is run on devices without a camera, such as the simulator
+        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
+            cameraButton.isEnabled = true
+        } else {
+            cameraButton.isEnabled = false
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,13 +73,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBAction func takeAPhoto(_ sender: Any) {
         
         imagePicker.delegate = self
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
-            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-            imagePicker.allowsEditing = true
-            present(imagePicker, animated: true, completion: nil)
-        } else {
-            cameraButton.isHidden = true
-        }
+        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        imagePicker.allowsEditing = false
+        present(imagePicker, animated: true, completion: nil)
         
     }
     
