@@ -15,12 +15,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var cameraButton: UIToolbar!
     
     let textFieldAttributes: [String:Any] = [
         NSForegroundColorAttributeName: UIColor.white,
         NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 40)!,
         NSStrokeColorAttributeName: UIColor.black,
-        NSStrokeWidthAttributeName: -3,
+        NSStrokeWidthAttributeName: -5,
         ]
     
     var imagePicker: UIImagePickerController!
@@ -35,12 +36,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         topTextField.attributedPlaceholder = NSAttributedString(string: "TOP", attributes: textFieldAttributes)
         topTextField.defaultTextAttributes = textFieldAttributes
         topTextField.textAlignment = .center
-        topTextField.backgroundColor = UIColor(white: 1, alpha: 0.0)
+        //topTextField.backgroundColor = UIColor(white: 1, alpha: 0.0)
         
         bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM", attributes: textFieldAttributes)
         bottomTextField.defaultTextAttributes = textFieldAttributes
         bottomTextField.textAlignment = .center
-        bottomTextField.backgroundColor = UIColor(white: 1, alpha: 0.0)
+        //bottomTextField.backgroundColor = UIColor(white: 1, alpha: 0.0)
         
         topTextField.delegate = self
         bottomTextField.delegate = self
@@ -51,22 +52,27 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
-        UIApplication.shared.isStatusBarHidden = false // hide status bar when saving image
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        UIApplication.shared.isStatusBarHidden = true
-    }
-
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
     
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func takeAPhoto(_ sender: Any) {
+        
+        imagePicker.delegate = self
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+            imagePicker.allowsEditing = true
+            present(imagePicker, animated: true, completion: nil)
+        } else {
+            cameraButton.isHidden = true
+        }
         
     }
     
@@ -79,7 +85,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+    
         textField.attributedPlaceholder = nil
+    
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -97,14 +105,17 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     func keyboardWillShow(_ notification: Notification) {
         
-        self.view.frame.origin.y = 0 - getKeyboardHeight(notification)
-        
+        if bottomTextField.isFirstResponder {
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+
     }
     
     func keyboardWillHide(_ notification: Notification) {
         
-        self.view.frame.origin.y += getKeyboardHeight(notification)
-        
+        if bottomTextField.isFirstResponder {
+            view.frame.origin.y = 0
+        }
     }
     
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
@@ -136,50 +147,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         var memedImage: UIImage
     }
     
-    @IBAction func shareImageButton(_ sender: Any) {
-        
-        if let originalImage = imagePickerView.image {
-        
-            let meme = Meme(topText: topTextField.text!,
-                            bottomText: bottomTextField.text!,
-                            originalImage: originalImage,
-                            memedImage: generateMemedImage())
-            
-            let activityViewController = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
-        
-            // present the view controller
-            present(activityViewController, animated: true, completion: nil)
-            
-        } else {
-            
-            let alert = UIAlertController(title: "Alert",
-                                          message: "Please select an image from photo library or camera",
-                                          preferredStyle: .alert)
-            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
- 
-            })
-            
-            alert.addAction(okayAction)
-            present(alert, animated: true, completion: nil)
-        }
-
-        
-//        activityViewController.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
-//            if (completed) {
-//                self.dismiss(animated: true, completion: nil)
-//            }
-//        }
-        
-        // exclude some activity types from the list (optional)
-        // activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
-        
-    }
-    
     func generateMemedImage() -> UIImage {
         
         // TODO: Hide toolbar and navbar
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.toolBar.isHidden = true
+        UIApplication.shared.isStatusBarHidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -190,11 +163,54 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         // TODO: Show toolbar and navbar
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.toolBar.isHidden = false
-        // UIApplication.shared.isStatusBarHidden = false
+        UIApplication.shared.isStatusBarHidden = false
         
         return memedImage
     }
+    
+    func save() {
+        // Create the meme
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        print("saved")
+    }
+    
+    @IBAction func shareImageButton(_ sender: Any) {
+        
+        if let originalImage = imagePickerView.image {
+        
+            let memedImage = generateMemedImage()
+        
+            let activityViewController = UIActivityViewController(activityItems: [ memedImage ], applicationActivities: nil)
+            // present the view controller
+            present(activityViewController, animated: true, completion: nil)
+            
+            activityViewController.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
+                if (completed) {
+                    self.save()
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+
+//            
+//        } else {
+//            
+//            let alert = UIAlertController(title: "Alert",
+//                                          message: "Please select an image from photo library or camera",
+//                                          preferredStyle: .alert)
+//            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
+// 
+//            })
+//            
+//            alert.addAction(okayAction)
+//            present(alert, animated: true, completion: nil)
+//        }
+
+        
+        // exclude some activity types from the list (optional)
+        // activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        
+        }
+    
+    }
 
 }
-
-

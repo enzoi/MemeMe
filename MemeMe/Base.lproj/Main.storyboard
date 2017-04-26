@@ -22,12 +22,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Zah-CB-qkq">
-                                <rect key="frame" x="0.0" y="64" width="414" height="628"/>
+                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zah-CB-qkq">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="Kys-hC-0tX">
-                                <rect key="frame" x="50" y="94" width="314" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="Kys-hC-0tX">
+                                <rect key="frame" x="50" y="69" width="314" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="cy4-Kv-HQF"/>
                                 </constraints>
@@ -36,7 +36,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="XHh-nr-77Z">
-                                <rect key="frame" x="50" y="622" width="314" height="40"/>
+                                <rect key="frame" x="50" y="627" width="314" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="oIx-eh-k2D"/>
                                 </constraints>
@@ -46,36 +46,41 @@
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHz-sU-iU3">
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3TB-3P-lyG"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem title="Album" id="QvL-2e-rdE">
                                         <connections>
                                             <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="fAR-2Q-Toj"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem systemItem="camera" id="kux-LL-xOk"/>
+                                    <barButtonItem systemItem="camera" id="kux-LL-xOk">
+                                        <connections>
+                                            <action selector="takeAPhoto:" destination="BYZ-38-t0r" id="Tzg-Nu-0nR"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
-                                <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="barTintColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AHz-sU-iU3" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="0In-Au-R99"/>
                             <constraint firstItem="Kys-hC-0tX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Uq-IF-M14"/>
-                            <constraint firstItem="Zah-CB-qkq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4zM-hk-HHj"/>
-                            <constraint firstItem="Zah-CB-qkq" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="-44" id="9gV-wk-Xgt"/>
-                            <constraint firstAttribute="trailing" secondItem="Zah-CB-qkq" secondAttribute="trailing" id="9kO-W2-Qz5"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="BpD-5d-1z0"/>
                             <constraint firstAttribute="trailing" secondItem="AHz-sU-iU3" secondAttribute="trailing" id="E46-bI-PV6"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="top" secondItem="Kys-hC-0tX" secondAttribute="bottom" constant="-119" id="Fzh-eT-8aC"/>
                             <constraint firstItem="XHh-nr-77Z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="GXv-xX-gFB"/>
-                            <constraint firstItem="Zah-CB-qkq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HM9-dY-TuF"/>
-                            <constraint firstItem="AHz-sU-iU3" firstAttribute="top" secondItem="XHh-nr-77Z" secondAttribute="bottom" constant="30" id="IkW-Uz-CXH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Kys-hC-0tX" secondAttribute="trailing" constant="30" id="JdC-Hy-aoh"/>
-                            <constraint firstAttribute="trailing" secondItem="Zah-CB-qkq" secondAttribute="trailing" id="PA3-NP-066"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="leading" secondItem="AHz-sU-iU3" secondAttribute="leading" id="RhF-Nz-npw"/>
                             <constraint firstItem="XHh-nr-77Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W5w-e2-Y3l"/>
-                            <constraint firstAttribute="trailing" secondItem="Zah-CB-qkq" secondAttribute="trailing" id="a5R-l9-Yqz"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="WcK-fS-BFc"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Yfo-Rc-ckX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Zah-CB-qkq" secondAttribute="bottom" id="Zg8-gV-EcS"/>
                             <constraint firstAttribute="trailing" secondItem="AHz-sU-iU3" secondAttribute="trailing" id="ajf-fI-9TN"/>
-                            <constraint firstItem="Kys-hC-0tX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="bKg-xK-Nds"/>
-                            <constraint firstItem="Zah-CB-qkq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hcg-L1-506"/>
-                            <constraint firstItem="Zah-CB-qkq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kLY-uA-eYX"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="dFb-PD-NSP"/>
+                            <constraint firstItem="XHh-nr-77Z" firstAttribute="top" secondItem="Zah-CB-qkq" secondAttribute="bottom" constant="-109" id="gqH-g3-pxN"/>
                             <constraint firstItem="Kys-hC-0tX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="vH2-ng-B5b"/>
                             <constraint firstItem="AHz-sU-iU3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xHD-Ei-b4l"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XHh-nr-77Z" secondAttribute="trailing" constant="30" id="ycT-Xw-5eL"/>
@@ -91,6 +96,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="XHh-nr-77Z" id="Ctp-AX-Kuu"/>
+                        <outlet property="cameraButton" destination="AHz-sU-iU3" id="Ubr-eR-OFj"/>
                         <outlet property="imagePickerView" destination="Zah-CB-qkq" id="g6u-a4-7P2"/>
                         <outlet property="toolBar" destination="AHz-sU-iU3" id="ClE-1M-w8X"/>
                         <outlet property="topTextField" destination="Kys-hC-0tX" id="OIp-gI-WZQ"/>
