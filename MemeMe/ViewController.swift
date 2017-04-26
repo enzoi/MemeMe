@@ -55,6 +55,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
@@ -125,6 +131,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        print(keyboardSize, keyboardSize.cgRectValue.height)
         return keyboardSize.cgRectValue.height
     
     }
@@ -173,13 +180,15 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     func save() {
         // Create the meme
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
-        print("saved")
+        let meme = Meme(topText: topTextField.text!,
+                        bottomText: bottomTextField.text!,
+                        originalImage: imagePickerView.image!,
+                        memedImage: generateMemedImage())
     }
     
     @IBAction func shareImageButton(_ sender: Any) {
         
-        if let originalImage = imagePickerView.image {
+        if imagePickerView.image != nil {
         
             let memedImage = generateMemedImage()
         
@@ -193,25 +202,18 @@ UINavigationControllerDelegate, UITextFieldDelegate {
                     self.dismiss(animated: true, completion: nil)
                 }
             }
-
-//            
-//        } else {
-//            
-//            let alert = UIAlertController(title: "Alert",
-//                                          message: "Please select an image from photo library or camera",
-//                                          preferredStyle: .alert)
-//            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
-// 
-//            })
-//            
-//            alert.addAction(okayAction)
-//            present(alert, animated: true, completion: nil)
-//        }
-
-        
-        // exclude some activity types from the list (optional)
-        // activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
-        
+            
+        } else {
+            
+            let alert = UIAlertController(title: "Alert",
+                                          message: "Please select an image from photo library or camera",
+                                          preferredStyle: .alert)
+            let okayAction = UIAlertAction(title: "Okay", style: .default, handler: { (action) -> Void in
+ 
+            })
+            
+            alert.addAction(okayAction)
+            present(alert, animated: true, completion: nil)
         }
     
     }
