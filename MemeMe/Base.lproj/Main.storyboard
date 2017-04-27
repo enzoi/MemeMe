@@ -60,7 +60,7 @@
                                     <constraint firstAttribute="height" constant="40" id="cy4-Kv-HQF"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
@@ -90,7 +90,11 @@
                                 <action selector="shareImageButton:" destination="BYZ-38-t0r" id="VcH-lk-WZd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="cUG-UH-Kw1"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="cUG-UH-Kw1">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="BYZ-38-t0r" id="iIg-XJ-1Ou"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="XHh-nr-77Z" id="Ctp-AX-Kuu"/>

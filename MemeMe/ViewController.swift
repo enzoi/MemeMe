@@ -19,7 +19,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     let textFieldAttributes: [String:Any] = [
         NSForegroundColorAttributeName: UIColor.white,
-        NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 40)!,
+        NSFontAttributeName: UIFont(name: "Arial-BoldMT", size: 40)!,
         NSStrokeColorAttributeName: UIColor.black,
         NSStrokeWidthAttributeName: -5,
         ]
@@ -36,12 +36,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         topTextField.attributedPlaceholder = NSAttributedString(string: "TOP", attributes: textFieldAttributes)
         topTextField.defaultTextAttributes = textFieldAttributes
         topTextField.textAlignment = .center
-        //topTextField.backgroundColor = UIColor(white: 1, alpha: 0.0)
         
         bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM", attributes: textFieldAttributes)
         bottomTextField.defaultTextAttributes = textFieldAttributes
         bottomTextField.textAlignment = .center
-        //bottomTextField.backgroundColor = UIColor(white: 1, alpha: 0.0)
         
         topTextField.delegate = self
         bottomTextField.delegate = self
@@ -59,6 +57,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -216,6 +215,17 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             present(alert, animated: true, completion: nil)
         }
     
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        
+        // go back to default setting (no image, placeholder text) when cancel button tapped
+
+        topTextField.text = ""
+        bottomTextField.text = ""
+
+        imagePickerView.image = nil
+        
     }
 
 }
