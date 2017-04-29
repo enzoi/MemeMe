@@ -19,7 +19,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     let textFieldAttributes: [String:Any] = [
         NSForegroundColorAttributeName: UIColor.white,
-        NSFontAttributeName: UIFont(name: "Arial-BoldMT", size: 40)!,
+        NSFontAttributeName: UIFont(name: "impact", size: 40)!,
         NSStrokeColorAttributeName: UIColor.black,
         NSStrokeWidthAttributeName: -5,
         ]
@@ -71,6 +71,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
         
     }
@@ -79,7 +80,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-        imagePicker.allowsEditing = false
+        imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
         
     }
@@ -130,7 +131,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-        print(keyboardSize, keyboardSize.cgRectValue.height)
+
         return keyboardSize.cgRectValue.height
     
     }
@@ -219,7 +220,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         
-        // go back to default setting (no image, placeholder text) when cancel button tapped
+        // go back to placeholder text, no image when cancel button tapped
 
         topTextField.text = ""
         bottomTextField.text = ""
