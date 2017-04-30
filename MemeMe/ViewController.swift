@@ -19,7 +19,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     let textFieldAttributes: [String:Any] = [
         NSForegroundColorAttributeName: UIColor.white,
-        NSFontAttributeName: UIFont(name: "impact", size: 40)!,
+        NSFontAttributeName: UIFont(name: "impact", size: 40),
         NSStrokeColorAttributeName: UIColor.black,
         NSStrokeWidthAttributeName: -5,
         ]
@@ -87,7 +87,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
-        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let image = info[UIImagePickerControllerEditedImage] as? UIImage
         imagePickerView.image = image
         
         imagePicker.dismiss(animated: true, completion: nil)
