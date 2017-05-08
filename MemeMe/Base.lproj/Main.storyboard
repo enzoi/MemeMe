@@ -46,16 +46,19 @@
                                     <constraint firstAttribute="height" constant="44" id="3TB-3P-lyG"/>
                                 </constraints>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="yQ6-dF-At1"/>
                                     <barButtonItem title="Album" id="QvL-2e-rdE">
                                         <connections>
                                             <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="fAR-2Q-Toj"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="GkH-4m-EgP"/>
                                     <barButtonItem systemItem="camera" id="kux-LL-xOk">
                                         <connections>
                                             <action selector="takeAPhoto:" destination="BYZ-38-t0r" id="Tzg-Nu-0nR"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="98J-4H-Eik"/>
                                 </items>
                                 <color key="barTintColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
@@ -118,7 +121,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZGF-Nz-Tft" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3Ib-zS-z4y">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Ib-zS-z4y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

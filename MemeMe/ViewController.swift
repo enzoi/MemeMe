@@ -25,7 +25,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         ]
     
     var imagePicker: UIImagePickerController!
-    
+   
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -50,7 +50,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         } else {
             cameraButton.isEnabled = false
         }
-        
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
