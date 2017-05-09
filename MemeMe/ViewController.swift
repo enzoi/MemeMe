@@ -161,7 +161,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         // TODO: Hide toolbar and navbar
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.toolBar.isHidden = true
-        UIApplication.shared.isStatusBarHidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -172,7 +171,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         // TODO: Show toolbar and navbar
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.toolBar.isHidden = false
-        UIApplication.shared.isStatusBarHidden = false
         
         return memedImage
     }
