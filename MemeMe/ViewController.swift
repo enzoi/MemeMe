@@ -19,13 +19,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     let textFieldAttributes: [String:Any] = [
         NSForegroundColorAttributeName: UIColor.white,
-        NSFontAttributeName: UIFont(name: "impact", size: 40),
+        NSFontAttributeName: UIFont(name: "impact", size: 40)!,
         NSStrokeColorAttributeName: UIColor.black,
         NSStrokeWidthAttributeName: -5,
         ]
     
     var imagePicker: UIImagePickerController!
-   
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -53,6 +53,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     }
     
+    
+    // Hide Status Bar
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
@@ -71,7 +77,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = false
         present(imagePicker, animated: true, completion: nil)
         
     }
@@ -80,14 +86,14 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = false
         present(imagePicker, animated: true, completion: nil)
         
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        let image = info[UIImagePickerControllerEditedImage] as? UIImage
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         imagePickerView.image = image
         
         imagePicker.dismiss(animated: true, completion: nil)
@@ -123,7 +129,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     func keyboardWillHide(_ notification: Notification) {
         
         if bottomTextField.isFirstResponder {
-            view.frame.origin.y = 0
+            view.frame.origin.y += getKeyboardHeight(notification)
         }
     }
     
@@ -150,13 +156,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     }
     
-    struct Meme {
-        var topText: String
-        var bottomText: String
-        var originalImage: UIImage?
-        var memedImage: UIImage
-    }
-    
     func generateMemedImage() -> UIImage {
         
         // TODO: Hide toolbar and navbar
@@ -178,27 +177,29 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         return memedImage
     }
     
-    func save() {
-        // Create the meme
-        let meme = Meme(topText: topTextField.text!,
-                        bottomText: bottomTextField.text!,
-                        originalImage: imagePickerView.image!,
-                        memedImage: generateMemedImage())
-    }
-    
     @IBAction func shareImageButton(_ sender: Any) {
+        
+        var memedImage: UIImage?
+        
+        func save() {
+            // Create the meme
+            let meme = Meme(topText: topTextField.text!,
+                            bottomText: bottomTextField.text!,
+                            originalImage: imagePickerView.image!,
+                            memedImage: memedImage)
+        }
         
         if imagePickerView.image != nil {
         
-            let memedImage = generateMemedImage()
-        
-            let activityViewController = UIActivityViewController(activityItems: [ memedImage ], applicationActivities: nil)
+            memedImage = generateMemedImage()
+            
+            let activityViewController = UIActivityViewController(activityItems: [ memedImage! ], applicationActivities: nil)
             // present the view controller
             present(activityViewController, animated: true, completion: nil)
             
             activityViewController.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
                 if (completed) {
-                    self.save()
+                    save()
                     self.dismiss(animated: true, completion: nil)
                 }
             }
@@ -229,4 +230,11 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
     }
 
+}
+
+struct Meme {
+    var topText: String
+    var bottomText: String
+    var originalImage: UIImage?
+    var memedImage: UIImage?
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZGF-Nz-Tft">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -24,24 +24,15 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Zah-CB-qkq">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="XHh-nr-77Z">
-                                <rect key="frame" x="50" y="622" width="314" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="oIx-eh-k2D"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="30"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHz-sU-iU3">
-                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3TB-3P-lyG"/>
                                 </constraints>
@@ -62,8 +53,17 @@
                                 </items>
                                 <color key="barTintColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="XHh-nr-77Z">
+                                <rect key="frame" x="16" y="513" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="oIx-eh-k2D"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="Kys-hC-0tX">
-                                <rect key="frame" x="50" y="74" width="314" height="40"/>
+                                <rect key="frame" x="16" y="110" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="cy4-Kv-HQF"/>
                                 </constraints>
@@ -75,21 +75,30 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AHz-sU-iU3" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="0In-Au-R99"/>
-                            <constraint firstItem="Kys-hC-0tX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Uq-IF-M14"/>
+                            <constraint firstItem="XHh-nr-77Z" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="1fF-xt-sgn"/>
                             <constraint firstAttribute="trailing" secondItem="AHz-sU-iU3" secondAttribute="trailing" id="E46-bI-PV6"/>
-                            <constraint firstItem="XHh-nr-77Z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="GXv-xX-gFB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Kys-hC-0tX" secondAttribute="trailing" constant="30" id="JdC-Hy-aoh"/>
-                            <constraint firstItem="Zah-CB-qkq" firstAttribute="leading" secondItem="AHz-sU-iU3" secondAttribute="leading" id="RhF-Nz-npw"/>
-                            <constraint firstItem="XHh-nr-77Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W5w-e2-Y3l"/>
-                            <constraint firstItem="Zah-CB-qkq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="WcK-fS-BFc"/>
-                            <constraint firstItem="Zah-CB-qkq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Yfo-Rc-ckX"/>
-                            <constraint firstAttribute="trailing" secondItem="AHz-sU-iU3" secondAttribute="trailing" id="ajf-fI-9TN"/>
-                            <constraint firstItem="Zah-CB-qkq" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="dFb-PD-NSP"/>
-                            <constraint firstItem="XHh-nr-77Z" firstAttribute="top" secondItem="Zah-CB-qkq" secondAttribute="bottom" constant="-114" id="gqH-g3-pxN"/>
-                            <constraint firstItem="Kys-hC-0tX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="vH2-ng-B5b"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FEo-UW-ich"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FlQ-og-iIp"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="O43-vp-eDz"/>
+                            <constraint firstAttribute="trailing" secondItem="Zah-CB-qkq" secondAttribute="trailing" id="Q4V-Qr-sO0"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TDW-qz-Z87"/>
+                            <constraint firstItem="Kys-hC-0tX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="X6S-3e-emq">
+                                <variation key="heightClass=compact" constant="-4"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="-6"/>
+                            </constraint>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="top" secondItem="Kys-hC-0tX" secondAttribute="bottom" constant="-150" id="cyz-J2-hO9"/>
+                            <constraint firstItem="Kys-hC-0tX" firstAttribute="centerX" secondItem="AHz-sU-iU3" secondAttribute="centerX" id="nZT-RQ-U4G">
+                                <variation key="heightClass=compact" constant="-2"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="-4"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="Zah-CB-qkq" secondAttribute="trailing" id="tjd-Gt-S2c"/>
+                            <constraint firstItem="Zah-CB-qkq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="x20-Pa-F1a"/>
                             <constraint firstItem="AHz-sU-iU3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xHD-Ei-b4l"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="XHh-nr-77Z" secondAttribute="trailing" constant="30" id="ycT-Xw-5eL"/>
-                            <constraint firstItem="Zah-CB-qkq" firstAttribute="top" secondItem="Kys-hC-0tX" secondAttribute="bottom" constant="-114" id="ygJ-IW-xdF"/>
+                            <constraint firstItem="XHh-nr-77Z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="xU3-1O-lTM"/>
+                            <constraint firstItem="AHz-sU-iU3" firstAttribute="top" secondItem="XHh-nr-77Z" secondAttribute="bottom" constant="70" id="xgo-UN-hK7">
+                                <variation key="heightClass=compact" constant="30"/>
+                                <variation key="heightClass=compact-widthClass=compact" constant="15"/>
+                            </constraint>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZHt-SN-aw3">
@@ -114,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1075.3623188405797" y="138.58695652173915"/>
+            <point key="canvasLocation" x="812" y="138.0809595202399"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Y8v-jm-JSc">
