@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate,
+class MemeEditorVC: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var topTextField: UITextField!
@@ -21,7 +21,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         NSForegroundColorAttributeName: UIColor.white,
         NSFontAttributeName: UIFont(name: "impact", size: 40)!,
         NSStrokeColorAttributeName: UIColor.black,
-        NSStrokeWidthAttributeName: -5,
+        NSStrokeWidthAttributeName: -3.6,
         ]
     
     var imagePicker: UIImagePickerController!
@@ -33,16 +33,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
-        topTextField.attributedPlaceholder = NSAttributedString(string: "TOP", attributes: textFieldAttributes)
-        topTextField.defaultTextAttributes = textFieldAttributes
-        topTextField.textAlignment = .center
-        
-        bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM", attributes: textFieldAttributes)
-        bottomTextField.defaultTextAttributes = textFieldAttributes
-        bottomTextField.textAlignment = .center
-        
-        topTextField.delegate = self
-        bottomTextField.delegate = self
+        prepareTextField(textField: topTextField, defaultText: "TOP")
+        prepareTextField(textField: bottomTextField, defaultText: "BOTTOM")
 
         // The Camera button is disabled when app is run on devices without a camera, such as the simulator
         if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
@@ -53,6 +45,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     }
     
+    func prepareTextField(textField: UITextField, defaultText: String) {
+        textField.delegate = self
+        textField.defaultTextAttributes = textFieldAttributes
+        textField.attributedPlaceholder = NSAttributedString(string: defaultText, attributes: textFieldAttributes)
+        textField.textAlignment = .center
+    }
     
     // Hide Status Bar
     override var prefersStatusBarHidden: Bool {
@@ -75,20 +73,21 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
     
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = false
-        present(imagePicker, animated: true, completion: nil)
+        pick(sourceType: .photoLibrary)
         
     }
     
     @IBAction func takeAPhoto(_ sender: Any) {
         
+        pick(sourceType: .camera)
+        
+    }
+    
+    func pick(sourceType: UIImagePickerControllerSourceType) {
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        imagePicker.sourceType = sourceType
         imagePicker.allowsEditing = false
         present(imagePicker, animated: true, completion: nil)
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -108,20 +107,20 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == topTextField {
-            topTextField.attributedPlaceholder = NSAttributedString(string: "TOP", attributes: textFieldAttributes)
+            prepareTextField(textField: topTextField, defaultText: "TOP")
         } else { // bottomTextField
-            bottomTextField.attributedPlaceholder = NSAttributedString(string: "BOTTOM", attributes: textFieldAttributes)
+            prepareTextField(textField: bottomTextField, defaultText: "BOTTOM")
         }
         
         textField.resignFirstResponder()
         
-        return true
+        return false
     }
     
     func keyboardWillShow(_ notification: Notification) {
         
         if bottomTextField.isFirstResponder {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y = -getKeyboardHeight(notification)
         }
 
     }
@@ -129,7 +128,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     func keyboardWillHide(_ notification: Notification) {
         
         if bottomTextField.isFirstResponder {
-            view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y = 0
         }
     }
     
@@ -159,18 +158,18 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     func generateMemedImage() -> UIImage {
         
         // TODO: Hide toolbar and navbar
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.toolBar.isHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        toolBar.isHidden = true
         
         // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         // TODO: Show toolbar and navbar
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.toolBar.isHidden = false
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        toolBar.isHidden = false
         
         return memedImage
     }
@@ -220,19 +219,14 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBAction func cancelButtonTapped(_ sender: Any) {
         
         // go back to placeholder text, no image when cancel button tapped
-
         topTextField.text = ""
         bottomTextField.text = ""
-
         imagePickerView.image = nil
+        
+        // reset to default text size in case that texts did shrink previously
+        prepareTextField(textField: topTextField, defaultText: "TOP")
+        prepareTextField(textField: bottomTextField, defaultText: "BOTTOM")
         
     }
 
-}
-
-struct Meme {
-    var topText: String
-    var bottomText: String
-    var originalImage: UIImage?
-    var memedImage: UIImage?
 }
