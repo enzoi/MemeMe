@@ -30,18 +30,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         super.viewDidLoad()
         
-        imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        
         prepareTextField(textField: topTextField, defaultText: "TOP")
         prepareTextField(textField: bottomTextField, defaultText: "BOTTOM")
-
-        // The Camera button is disabled when app is run on devices without a camera, such as the simulator
-        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
-            cameraButton.isEnabled = true
-        } else {
-            cameraButton.isEnabled = false
-        }
     
     }
     
@@ -61,6 +51,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
+        
+        // The Camera button is disabled when app is run on devices without a camera, such as the simulator
+        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
+            cameraButton.isEnabled = true
+        } else {
+            cameraButton.isEnabled = false
+        }
         
     }
     
@@ -84,6 +81,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     func pick(sourceType: UIImagePickerControllerSourceType) {
+        imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = sourceType
         imagePicker.allowsEditing = false
@@ -222,11 +220,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         topTextField.text = ""
         bottomTextField.text = ""
         imagePickerView.image = nil
-        
-        // reset to default text size in case that texts did shrink previously
-        prepareTextField(textField: topTextField, defaultText: "TOP")
-        prepareTextField(textField: bottomTextField, defaultText: "BOTTOM")
-        
+           
     }
 
 }
