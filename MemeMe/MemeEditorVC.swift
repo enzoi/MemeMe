@@ -25,6 +25,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         ]
     
     var imagePicker: UIImagePickerController!
+    var memes = [Meme]()
     
     override func viewDidLoad() {
         
@@ -182,6 +183,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
                             bottomText: bottomTextField.text!,
                             originalImage: imagePickerView.image!,
                             memedImage: memedImage)
+            self.memes.append(meme)
         }
         
         if imagePickerView.image != nil {
@@ -197,7 +199,19 @@ UINavigationControllerDelegate, UITextFieldDelegate {
                     save()
                     self.dismiss(animated: true, completion: nil)
                 }
+                
+                // Get the storyboard and MemeTableViewController
+                let storyboard = UIStoryboard (name: "Main", bundle: nil)
+                let memeTableVC = storyboard.instantiateViewController(withIdentifier: "MemeTableVC") as! MemeTableVC
+                
+                // Communicate the memes
+                memeTableVC.memes = self.memes
+                
+                // programmatically push view controller
+                self.navigationController?.pushViewController(memeTableVC, animated: true)
+                
             }
+            
             
         } else {
             
