@@ -118,22 +118,6 @@
             </objects>
             <point key="canvasLocation" x="565.60000000000002" y="138.98050974512745"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="nlU-P4-XXF">
-            <objects>
-                <navigationController id="dWx-Jn-ZPz" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wkd-74-rJX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="yVk-a9-86H" kind="show" id="EnQ-WA-UhX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Kp-U7-2b5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1530" y="139"/>
-        </scene>
         <!--Sent Memes-->
         <scene sceneID="XGE-8E-IFG">
             <objects>
@@ -174,17 +158,13 @@
                             <outlet property="delegate" destination="9f7-Eu-yIz" id="ZG3-O0-JeQ"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="" image="collection_30x30" id="xN3-Fe-UzR"/>
                     <navigationItem key="navigationItem" title="Sent Memes" id="xrx-Qr-Ie8">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sx9-pl-Lue"/>
                     </navigationItem>
-                    <connections>
-                        <segue destination="c8D-dT-HCB" kind="show" id="KAx-Mn-m9p"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqi-qW-rbW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3206" y="536"/>
+            <point key="canvasLocation" x="4144.8000000000002" y="535.68215892053979"/>
         </scene>
         <!--Sent Memes-->
         <scene sceneID="Zbq-Gt-Srl">
@@ -234,19 +214,13 @@
                             <outlet property="delegate" destination="auw-co-x0w" id="IBk-8v-pgT"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="" image="table_30x30" id="lO1-sp-NDm">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                    </tabBarItem>
                     <navigationItem key="navigationItem" title="Sent Memes" id="L1p-dB-vNW">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7Ub-26-ztD"/>
                     </navigationItem>
-                    <connections>
-                        <segue destination="c8D-dT-HCB" kind="show" id="IJx-wU-G8n"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jt8-lI-PUw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3205.5999999999999" y="-205.54722638680661"/>
+            <point key="canvasLocation" x="4144.8000000000002" y="-205.54722638680661"/>
         </scene>
         <!--Title-->
         <scene sceneID="fiG-Fg-gde">
@@ -281,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgn-1j-aDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4089" y="139"/>
+            <point key="canvasLocation" x="5967.1999999999998" y="138.98050974512745"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Y8v-jm-JSc">
@@ -304,27 +278,64 @@
         <!--Tab Bar Controller-->
         <scene sceneID="p8m-Sc-6oV">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="yVk-a9-86H" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" automaticallyAdjustsScrollViewInsets="NO" id="yVk-a9-86H" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="WbD-4e-KuA">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="auw-co-x0w" kind="relationship" relationship="viewControllers" id="ZdF-eK-DMR"/>
-                        <segue destination="9f7-Eu-yIz" kind="relationship" relationship="viewControllers" id="PHe-sU-30r"/>
+                        <segue destination="IwY-so-9wb" kind="relationship" relationship="viewControllers" id="ZdF-eK-DMR"/>
+                        <segue destination="vNT-WF-5z1" kind="relationship" relationship="viewControllers" id="PHe-sU-30r"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n2D-Ou-Rcy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2255" y="139"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AfO-Ga-Krx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IwY-so-9wb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="table_30x30" id="lO1-sp-NDm">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ibb-3p-mWw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="auw-co-x0w" kind="relationship" relationship="rootViewController" id="KFF-f6-gnn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DAN-Hv-fxM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3205.5999999999999" y="-205.54722638680661"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="utG-9q-jeG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vNT-WF-5z1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="collection_30x30" id="xN3-Fe-UzR"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ErF-31-UNu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9f7-Eu-yIz" kind="relationship" relationship="rootViewController" id="idS-N4-R0Q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aW3-8d-ZTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3205.5999999999999" y="535.68215892053979"/>
+        </scene>
     </scenes>
     <resources>
         <image name="collection_30x30" width="30" height="30"/>
         <image name="table_30x30" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="IJx-wU-G8n"/>
-    </inferredMetricsTieBreakers>
 </document>

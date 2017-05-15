@@ -202,13 +202,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
                 
                 // Get the storyboard and MemeTableViewController
                 let storyboard = UIStoryboard (name: "Main", bundle: nil)
-                let memeTableVC = storyboard.instantiateViewController(withIdentifier: "MemeTableVC") as! MemeTableVC
+                let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
                 
                 // Communicate the memes
-                memeTableVC.memes = self.memes
+                // memeTableVC.memes = self.memes
                 
                 // programmatically push view controller
-                self.navigationController?.pushViewController(memeTableVC, animated: true)
+                self.present(tabBarController, animated: true, completion: nil)
                 
             }
             
