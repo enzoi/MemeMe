@@ -21,7 +21,7 @@ class MemeCollectionVC: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "collectionViewCell")
 
         // Do any additional setup after loading the view.
     }
@@ -46,7 +46,7 @@ class MemeCollectionVC: UICollectionViewController {
         let meme = self.memes[(indexPath as NSIndexPath).row]
         
         // Set the collection view image
-        cell.memeImageView?.image = meme.memedImage
+        cell.imageView?.image = meme.memedImage
     
         return cell
     }
