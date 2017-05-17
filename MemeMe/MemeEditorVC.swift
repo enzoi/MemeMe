@@ -67,6 +67,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
         
+        prepareTextField(textField: topTextField, defaultText: "TOP")
+        prepareTextField(textField: bottomTextField, defaultText: "BOTTOM")
+        
     }
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
@@ -197,25 +200,26 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             activityViewController.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
                 if (completed) {
                     save()
-                    self.dismiss(animated: true, completion: nil)
+                    print(self.memes)
+                    // self.dismiss(animated: true, completion: nil)
+                    
+                    // Get the storyboard and TabBar Controller
+                    let storyboard = UIStoryboard (name: "Main", bundle: nil)
+                    let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+                    
+                    let memeTableVC = storyboard.instantiateViewController(withIdentifier: "MemeTableVC") as! MemeTableVC
+                    let memeCollectionVC = storyboard.instantiateViewController(withIdentifier: "MemeCollectionVC") as! MemeCollectionVC
+                    
+                    memeTableVC.memes = self.memes
+                    memeCollectionVC.memes = self.memes
+                    
+                    let viewControllerList = [ memeTableVC, memeCollectionVC ]
+                    
+                    tabBarController.viewControllers = viewControllerList.map { UINavigationController(rootViewController: $0) }
+                    
+                    // programmatically push view controller
+                    self.present(tabBarController, animated: true, completion: nil)
                 }
-                
-                // Get the storyboard and TabBar Controller
-                let storyboard = UIStoryboard (name: "Main", bundle: nil)
-                let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-                
-                let memeTableVC = storyboard.instantiateViewController(withIdentifier: "MemeTableVC") as! MemeTableVC
-                let memeCollectionVC = storyboard.instantiateViewController(withIdentifier: "MemeCollectionVC") as! MemeCollectionVC
-                
-                memeTableVC.memes = self.memes
-                memeCollectionVC.memes = self.memes
-                
-                let viewControllerList = [ memeTableVC, memeCollectionVC ]
-                
-                tabBarController.viewControllers = viewControllerList.map { UINavigationController(rootViewController: $0) }
-                
-                // programmatically push view controller
-                self.present(tabBarController, animated: true, completion: nil)
                 
             }
             
