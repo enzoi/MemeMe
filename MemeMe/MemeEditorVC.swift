@@ -60,6 +60,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             cameraButton.isEnabled = false
         }
         
+        // meme
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

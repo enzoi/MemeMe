@@ -24,6 +24,15 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+
     // MARK: - Table view data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
