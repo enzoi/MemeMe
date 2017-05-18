@@ -26,6 +26,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     var imagePicker: UIImagePickerController!
     var memes = [Meme]()
+    var currentMeme: Meme?
     
     override func viewDidLoad() {
         
@@ -53,6 +54,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
         self.tabBarController?.tabBar.isHidden = true
+        
+        if self.currentMeme != nil {
+            self.topTextField.text = currentMeme?.topText
+            self.imagePickerView.image = currentMeme?.memedImage
+            self.bottomTextField.text = currentMeme?.bottomText
+        }
         
         // The Camera button is disabled when app is run on devices without a camera, such as the simulator
         if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {

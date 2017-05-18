@@ -32,9 +32,10 @@ class MemeDetailVC: UIViewController {
         // present MemeEditorVC with current meme info
         let editorVC = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorVC
         // pass data
-        editorVC.topTextField?.text = self.meme.topText
-        editorVC.imagePickerView?.image = self.meme.memedImage
-        editorVC.bottomTextField?.text = self.meme.bottomText
+        editorVC.currentMeme = self.meme
+//        editorVC.topTextField?.text = self.meme.topText
+//        editorVC.imagePickerView?.image = self.meme.memedImage
+//        editorVC.bottomTextField?.text = self.meme.bottomText
         
         self.navigationController!.pushViewController(editorVC, animated: true)
     }
