@@ -76,6 +76,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         unsubscribeFromKeyboardNotifications()
         self.tabBarController?.tabBar.isHidden = false
         
+        self.currentMeme = nil
+        
         prepareTextField(textField: topTextField, defaultText: "TOP")
         prepareTextField(textField: bottomTextField, defaultText: "BOTTOM")
         
