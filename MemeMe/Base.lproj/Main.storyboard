@@ -162,7 +162,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="xrx-Qr-Ie8">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="sx9-pl-Lue"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="sx9-pl-Lue">
+                            <connections>
+                                <action selector="addMemeButtonTapped:" destination="9f7-Eu-yIz" id="eIb-uZ-M5a"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="flowLayout" destination="DeV-da-iCO" id="VXW-S4-QW6"/>

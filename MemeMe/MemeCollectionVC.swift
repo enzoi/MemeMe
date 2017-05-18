@@ -74,5 +74,16 @@ class MemeCollectionVC: UICollectionViewController {
         self.navigationController!.pushViewController(detailController, animated: true)
         
     }
+    
+    @IBAction func addMemeButtonTapped(_ sender: UIBarButtonItem) {
+        
+        // present MemeEditorVC with current meme info
+        let editorController = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorVC
+        
+        editorController.memes = self.memes
+        
+        self.navigationController!.pushViewController(editorController, animated: true)
+        
+    }
 
 }
