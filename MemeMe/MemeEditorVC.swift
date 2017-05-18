@@ -211,7 +211,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             activityViewController.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
                 if (completed) {
                     save()
-                    print(self.memes)
                     // self.dismiss(animated: true, completion: nil)
                     
                     // Get the storyboard and TabBar Controller

@@ -28,9 +28,9 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        self.tabBarController?.tabBar.isHidden = true
+//    }
     
 
     // MARK: - Table view data source
