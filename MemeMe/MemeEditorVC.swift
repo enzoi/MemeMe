@@ -52,6 +52,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
+        self.tabBarController?.tabBar.isHidden = true
         
         // The Camera button is disabled when app is run on devices without a camera, such as the simulator
         if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
@@ -60,14 +61,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             cameraButton.isEnabled = false
         }
         
-        // meme
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+        self.tabBarController?.tabBar.isHidden = false
         
         prepareTextField(textField: topTextField, defaultText: "TOP")
         prepareTextField(textField: bottomTextField, defaultText: "BOTTOM")

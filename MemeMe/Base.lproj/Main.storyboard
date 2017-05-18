@@ -185,7 +185,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="76"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XJc-Vx-DAJ" id="UjB-Ql-ypC">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="75.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ltQ-vj-epx">
@@ -220,40 +220,44 @@
             </objects>
             <point key="canvasLocation" x="2945" y="-158"/>
         </scene>
-        <!--MemeDetailVC-->
-        <scene sceneID="fiG-Fg-gde">
+        <!--Meme-->
+        <scene sceneID="fPu-n5-1xY">
             <objects>
-                <viewController storyboardIdentifier="MemeDetailVC" id="c8D-dT-HCB" userLabel="MemeDetailVC" customClass="MemeDetailVC" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeDetailVC" id="xh0-1E-thd" customClass="MemeDetailVC" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vtJ-GC-xOD"/>
-                        <viewControllerLayoutGuide type="bottom" id="VaK-B3-RPP"/>
+                        <viewControllerLayoutGuide type="top" id="Xsk-Mh-hjV"/>
+                        <viewControllerLayoutGuide type="bottom" id="T5B-oR-3rC"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4oc-yU-BaS">
+                    <view key="view" contentMode="scaleToFill" id="qxz-Vx-3qT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cw2-4n-ANS">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tc3-Zd-m95">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="cw2-4n-ANS" secondAttribute="trailing" id="0Y7-p2-34F"/>
-                            <constraint firstAttribute="bottom" secondItem="cw2-4n-ANS" secondAttribute="bottom" id="OMP-0A-ZMA"/>
-                            <constraint firstItem="cw2-4n-ANS" firstAttribute="leading" secondItem="4oc-yU-BaS" secondAttribute="leading" id="PA5-lt-59f"/>
-                            <constraint firstItem="cw2-4n-ANS" firstAttribute="top" secondItem="vtJ-GC-xOD" secondAttribute="bottom" id="ZAN-6K-99t"/>
+                            <constraint firstAttribute="trailing" secondItem="tc3-Zd-m95" secondAttribute="trailing" id="AOO-IA-cTy"/>
+                            <constraint firstItem="tc3-Zd-m95" firstAttribute="leading" secondItem="qxz-Vx-3qT" secondAttribute="leading" id="APQ-Hs-RqM"/>
+                            <constraint firstAttribute="bottom" secondItem="tc3-Zd-m95" secondAttribute="bottom" id="FME-qB-Sd3"/>
+                            <constraint firstItem="tc3-Zd-m95" firstAttribute="top" secondItem="qxz-Vx-3qT" secondAttribute="top" id="fX9-ez-vQQ"/>
                         </constraints>
                     </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="Ufv-Re-7wZ" userLabel="Meme"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Meme" id="RdP-jy-eGm">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="C7I-3U-etd">
+                            <connections>
+                                <action selector="editButtonTapped:" destination="xh0-1E-thd" id="ozR-lw-3F2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="imageView" destination="cw2-4n-ANS" id="303-BT-urQ"/>
+                        <outlet property="imageView" destination="tc3-Zd-m95" id="46q-GP-ees"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cgn-1j-aDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FgM-Ym-eHF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3672.8000000000002" y="212.74362818590706"/>
+            <point key="canvasLocation" x="3672.8000000000002" y="-158.77061469265368"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Y8v-jm-JSc">

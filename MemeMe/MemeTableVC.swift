@@ -66,8 +66,8 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailVC") as! MemeDetailVC
         detailController.meme = self.memes[(indexPath as NSIndexPath).row]
         
-        let edit = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: Selector(("editButtonTapped")))
-        detailController.navigationItem.rightBarButtonItem = edit
+        let rightBarButton = UIBarButtonItem(title: "Edit", style: .plain, target: detailController, action: #selector(detailController.editButtonTapped(_:)))
+        detailController.navigationItem.rightBarButtonItem = rightBarButton
         
         self.navigationController!.pushViewController(detailController, animated: true)
     }

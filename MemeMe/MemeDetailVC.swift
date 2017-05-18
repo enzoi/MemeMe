@@ -30,14 +30,13 @@ class MemeDetailVC: UIViewController {
     @IBAction func editButtonTapped(_ sender: Any) {
         
         // present MemeEditorVC with current meme info
-        let editorController = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorVC
-        // pass data 
-        editorController.topTextField.text = self.meme.topText
-        editorController.imagePickerView.image = self.meme.memedImage
-        editorController.bottomTextField.text = self.meme.bottomText
+        let editorVC = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorVC
+        // pass data
+        editorVC.topTextField?.text = self.meme.topText
+        editorVC.imagePickerView?.image = self.meme.memedImage
+        editorVC.bottomTextField?.text = self.meme.bottomText
         
-        self.navigationController?.pushViewController(editorController, animated: true)
-        
+        self.navigationController!.pushViewController(editorVC, animated: true)
     }
     
 }
