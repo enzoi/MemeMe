@@ -227,6 +227,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
                     let viewControllerList = [ memeTableVC, memeCollectionVC ]
                     
                     tabBarController.viewControllers = viewControllerList.map { UINavigationController(rootViewController: $0) }
+                    tabBarController.tabBar.items![0].image = UIImage(named: "table_30x30")
+                    tabBarController.tabBar.items![1].image = UIImage(named: "collection_30x30")
                     
                     // programmatically push view controller
                     self.present(tabBarController, animated: true, completion: nil)

@@ -23,7 +23,7 @@ class MemeCollectionVC: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "collectionViewCell")
+        // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "collectionViewCell")
 
         // Do any additional setup after loading the view.
         let space:CGFloat = 3.0
@@ -37,17 +37,17 @@ class MemeCollectionVC: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
-    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        self.tabBarController?.tabBar.isHidden = true
+//    }
 
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
