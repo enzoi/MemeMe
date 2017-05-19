@@ -67,6 +67,7 @@ class MemeCollectionVC: UICollectionViewController {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! MemeCollectionViewCell
         let meme = self.memes[(indexPath as NSIndexPath).row]
+        
         var cellTopText = meme.topText
         var cellBottomText = meme.bottomText
         
@@ -92,7 +93,15 @@ class MemeCollectionVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
         
         let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailVC") as! MemeDetailVC
-        detailController.meme = self.memes[(indexPath as NSIndexPath).row]
+        let selectedIndex = (indexPath as NSIndexPath).row
+        
+        detailController.memes = self.memes
+        detailController.meme = self.memes[selectedIndex]
+        detailController.selectedIndex = selectedIndex
+        
+        let rightBarButton = UIBarButtonItem(title: "Edit", style: .plain, target: detailController, action: #selector(detailController.editButtonTapped(_:)))
+        detailController.navigationItem.rightBarButtonItem = rightBarButton
+        
         self.navigationController!.pushViewController(detailController, animated: true)
         
     }
