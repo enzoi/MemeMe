@@ -8,9 +8,23 @@
 
 import UIKit
 
+class MemeTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var thumbnailTopText: UILabel!
+    @IBOutlet weak var thumbnailBottomText: UILabel!
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var thumbnailTitle: UILabel!
+    
+}
+
+
+
 class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var memes = [Meme]()
+    
+    @IBOutlet weak var topText: UILabel!
+    @IBOutlet weak var bottomText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +55,7 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! MemeTableViewCell
         let meme = self.memes[(indexPath as NSIndexPath).row]
         var cellTopText = meme.topText
         var cellBottomText = meme.bottomText
@@ -55,9 +69,11 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
             cellBottomText = "BOTTOM"
         }
         
-        cell.textLabel?.text = cellTopText + "..." + cellBottomText
-        cell.imageView?.image = meme.memedImage
-        
+        cell.thumbnailTitle?.text = cellTopText + "..." + cellBottomText
+        cell.thumbnailImageView?.image = meme.originalImage
+        cell.thumbnailTopText.text = cellTopText
+        cell.thumbnailBottomText.text = cellBottomText
+    
         return cell
     }
 

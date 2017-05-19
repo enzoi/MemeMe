@@ -55,6 +55,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         subscribeToKeyboardNotifications()
         self.tabBarController?.tabBar.isHidden = true
         
+        // populate editor when a meme sent from MemeDetailVC
         if self.currentMeme != nil {
             self.topTextField.text = currentMeme?.topText
             self.imagePickerView.image = currentMeme?.memedImage
