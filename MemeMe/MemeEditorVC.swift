@@ -58,7 +58,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         // populate editor when a meme sent from MemeDetailVC
         if self.currentMeme != nil {
             self.topTextField.text = currentMeme?.topText
-            self.imagePickerView.image = currentMeme?.memedImage
+            self.imagePickerView.image = currentMeme?.originalImage
             self.bottomTextField.text = currentMeme?.bottomText
         }
         
