@@ -20,7 +20,9 @@ class MemeTableViewCell: UITableViewCell {
 class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var memes = [Meme]()
+    var deleteMemeIndexPath: NSIndexPath? = nil
     
+    @IBOutlet var tableView: UITableView!
     @IBOutlet weak var topText: UILabel!
     @IBOutlet weak var bottomText: UILabel!
     
@@ -97,6 +99,45 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         detailController.navigationItem.rightBarButtonItem = rightBarButton
         
         self.navigationController!.pushViewController(detailController, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteMemeIndexPath = indexPath as NSIndexPath
+            let memeToDelete = self.memes[indexPath.row]
+            confirmDelete(meme: memeToDelete)
+        }
+    }
+    
+    func confirmDelete(meme: Meme) {
+        let alert = UIAlertController(title: "Delete Meme", message: "Are you sure you want to permanently delete the meme?", preferredStyle: .actionSheet)
+        
+        let DeleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: handleDeleteMeme)
+        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: cancelDeleteMeme)
+        
+        alert.addAction(DeleteAction)
+        alert.addAction(CancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func handleDeleteMeme(alertAction: UIAlertAction!) -> Void {
+        if let indexPath = deleteMemeIndexPath {
+            self.tableView.beginUpdates()
+            
+            memes.remove(at: indexPath.row)
+            
+            // Note that indexPath is wrapped in an array:  [indexPath]
+            self.tableView.deleteRows(at: [indexPath as IndexPath], with: .automatic)
+            
+            deleteMemeIndexPath = nil
+            
+            tableView.endUpdates()
+        }
+    }
+    
+    func cancelDeleteMeme(alertAction: UIAlertAction!) {
+        deleteMemeIndexPath = nil
     }
 
     @IBAction func addMemeButtonTapped(_ sender: UIBarButtonItem) {

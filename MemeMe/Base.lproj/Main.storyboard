@@ -254,6 +254,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="tableView" destination="aOI-LW-6JB" id="FQU-tH-9q8"/>
                                     <outlet property="thumbnailBottomText" destination="dtJ-du-tU1" id="Iez-Gi-5q7"/>
                                     <outlet property="thumbnailImageView" destination="ltQ-vj-epx" id="dQ4-7g-2Lf"/>
                                     <outlet property="thumbnailTitle" destination="4kA-JR-BDE" id="xel-Ww-fGi"/>
@@ -273,6 +274,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="aOI-LW-6JB" id="tD8-BQ-hwv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jt8-lI-PUw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
