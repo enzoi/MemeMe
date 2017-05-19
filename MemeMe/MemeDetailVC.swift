@@ -10,7 +10,9 @@ import UIKit
 
 class MemeDetailVC: UIViewController {
 
+    var memes = [Meme]()
     var meme: Meme!
+    var selectedIndex: Int!
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -32,10 +34,10 @@ class MemeDetailVC: UIViewController {
         // present MemeEditorVC with current meme info
         let editorVC = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorVC
         // pass data
+        editorVC.memes = self.memes
         editorVC.currentMeme = self.meme
-//        editorVC.topTextField?.text = self.meme.topText
-//        editorVC.imagePickerView?.image = self.meme.memedImage
-//        editorVC.bottomTextField?.text = self.meme.bottomText
+        editorVC.selectedIndex = self.selectedIndex
+        print(self.memes, self.meme, self.selectedIndex)
         
         self.navigationController!.pushViewController(editorVC, animated: true)
     }

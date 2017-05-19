@@ -44,7 +44,9 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
         self.tabBarController?.tabBar.isHidden = false
+    
     }
     
 //    override func viewWillDisappear(_ animated: Bool) {
@@ -85,7 +87,11 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailVC") as! MemeDetailVC
-        detailController.meme = self.memes[(indexPath as NSIndexPath).row]
+        let selectedIndex = (indexPath as NSIndexPath).row
+        
+        detailController.memes = self.memes
+        detailController.meme = self.memes[selectedIndex]
+        detailController.selectedIndex = selectedIndex
         
         let rightBarButton = UIBarButtonItem(title: "Edit", style: .plain, target: detailController, action: #selector(detailController.editButtonTapped(_:)))
         detailController.navigationItem.rightBarButtonItem = rightBarButton

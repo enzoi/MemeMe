@@ -16,6 +16,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     let textFieldAttributes: [String:Any] = [
         NSForegroundColorAttributeName: UIColor.white,
@@ -27,6 +28,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     var imagePicker: UIImagePickerController!
     var memes = [Meme]()
     var currentMeme: Meme?
+    var selectedIndex: Int?
     
     override func viewDidLoad() {
         
@@ -67,6 +69,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             cameraButton.isEnabled = true
         } else {
             cameraButton.isEnabled = false
+        }
+        
+        // The Cancel button is disabled when there is no memes in the app
+        if currentMeme == nil {
+            cancelButton.isEnabled = false
+        } else {
+            cancelButton.isEnabled = true
         }
         
     }
@@ -198,7 +207,14 @@ UINavigationControllerDelegate, UITextFieldDelegate {
                             bottomText: bottomTextField.text!,
                             originalImage: imagePickerView.image!,
                             memedImage: memedImage)
-            self.memes.append(meme)
+            
+            // Add to memes list when the meme is created in the editor not sent from detailVC
+            if self.selectedIndex == nil { // new meme
+                self.memes.append(meme)
+            } else {
+                // get array index to replace existing meme
+                self.memes[selectedIndex!] = meme
+            }
         }
         
         if imagePickerView.image != nil {
@@ -215,20 +231,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
                     // self.dismiss(animated: true, completion: nil)
                     
                     // Get the storyboard and TabBar Controller
-                    let storyboard = UIStoryboard (name: "Main", bundle: nil)
-                    let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-                    
-                    let memeTableVC = storyboard.instantiateViewController(withIdentifier: "MemeTableVC") as! MemeTableVC
-                    let memeCollectionVC = storyboard.instantiateViewController(withIdentifier: "MemeCollectionVC") as! MemeCollectionVC
-                    
-                    memeTableVC.memes = self.memes
-                    memeCollectionVC.memes = self.memes
-                    
-                    let viewControllerList = [ memeTableVC, memeCollectionVC ]
-                    
-                    tabBarController.viewControllers = viewControllerList.map { UINavigationController(rootViewController: $0) }
-                    tabBarController.tabBar.items![0].image = UIImage(named: "table_30x30")
-                    tabBarController.tabBar.items![1].image = UIImage(named: "collection_30x30")
+                    let tabBarController = self.getTabBarController()
                     
                     // programmatically push view controller
                     self.present(tabBarController, animated: true, completion: nil)
@@ -254,11 +257,33 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         
-        // go back to placeholder text, no image when cancel button tapped
-        topTextField.text = ""
-        bottomTextField.text = ""
-        imagePickerView.image = nil
-           
+        // Go back to Tab Bar controller
+        let tabBarController = getTabBarController()
+        
+        // programmatically push view controller
+        self.present(tabBarController, animated: true, completion: nil)
+    }
+    
+    // get Tab Bar Controller
+    func getTabBarController() -> UITabBarController {
+        let storyboard = UIStoryboard (name: "Main", bundle: nil)
+        let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+        
+        let memeTableVC = storyboard.instantiateViewController(withIdentifier: "MemeTableVC") as! MemeTableVC
+        let memeCollectionVC = storyboard.instantiateViewController(withIdentifier: "MemeCollectionVC") as! MemeCollectionVC
+        
+        memeTableVC.memes = self.memes
+        memeCollectionVC.memes = self.memes
+        
+        let viewControllerList = [ memeTableVC, memeCollectionVC ]
+        
+        tabBarController.viewControllers = viewControllerList.map { UINavigationController(rootViewController: $0) }
+        tabBarController.tabBar.items![0].image = UIImage(named: "table_30x30")
+        tabBarController.tabBar.items![1].image = UIImage(named: "collection_30x30")
+        
+        return tabBarController
     }
 
 }
+
+

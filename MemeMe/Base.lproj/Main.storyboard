@@ -109,6 +109,7 @@
                     <connections>
                         <outlet property="bottomTextField" destination="XHh-nr-77Z" id="Ctp-AX-Kuu"/>
                         <outlet property="cameraButton" destination="kux-LL-xOk" id="qDf-k0-w9L"/>
+                        <outlet property="cancelButton" destination="cUG-UH-Kw1" id="Jaw-Tk-jJa"/>
                         <outlet property="imagePickerView" destination="Zah-CB-qkq" id="g6u-a4-7P2"/>
                         <outlet property="toolBar" destination="AHz-sU-iU3" id="ClE-1M-w8X"/>
                         <outlet property="topTextField" destination="Kys-hC-0tX" id="OIp-gI-WZQ"/>
@@ -143,15 +144,15 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QHT-ud-BBe">
                                             <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ys6-Cx-ThX">
-                                            <rect key="frame" x="36" y="7" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TopText" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ys6-Cx-ThX">
+                                            <rect key="frame" x="18.5" y="10" width="78" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXZ-Ep-kSc">
-                                            <rect key="frame" x="36" y="85" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BottomText" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXZ-Ep-kSc">
+                                            <rect key="frame" x="18.5" y="85" width="78" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -218,14 +219,14 @@
                                                 <constraint firstAttribute="height" constant="115" id="rWg-kY-Lqv"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx3-6L-4yF">
-                                            <rect key="frame" x="38.5" y="12" width="37.5" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TopText" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx3-6L-4yF">
+                                            <rect key="frame" x="30.5" y="12" width="53.5" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtJ-du-tU1">
-                                            <rect key="frame" x="38.5" y="85" width="37.5" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BottomText" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtJ-du-tU1">
+                                            <rect key="frame" x="18.5" y="85" width="78" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -276,10 +277,10 @@
             </objects>
             <point key="canvasLocation" x="2944.8000000000002" y="-158.77061469265368"/>
         </scene>
-        <!--Meme-->
+        <!--MemeDetailVC-->
         <scene sceneID="fPu-n5-1xY">
             <objects>
-                <viewController storyboardIdentifier="MemeDetailVC" id="xh0-1E-thd" customClass="MemeDetailVC" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeDetailVC" title="MemeDetailVC" id="xh0-1E-thd" customClass="MemeDetailVC" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xsk-Mh-hjV"/>
                         <viewControllerLayoutGuide type="bottom" id="T5B-oR-3rC"/>
@@ -313,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgM-Ym-eHF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3672.8000000000002" y="-158.77061469265368"/>
+            <point key="canvasLocation" x="3663" y="206"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Y8v-jm-JSc">
