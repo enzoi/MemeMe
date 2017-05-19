@@ -17,14 +17,19 @@ class MemeTableViewCell: UITableViewCell {
     
 }
 
-
-
 class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var memes = [Meme]()
     
     @IBOutlet weak var topText: UILabel!
     @IBOutlet weak var bottomText: UILabel!
+    
+    let titleTextAttributes: [String:Any] = [
+        NSForegroundColorAttributeName: UIColor.white,
+        NSFontAttributeName: UIFont(name: "impact", size: 15)!,
+        NSStrokeColorAttributeName: UIColor.black,
+        NSStrokeWidthAttributeName: -3.6,
+        ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,8 +76,8 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         
         cell.thumbnailTitle?.text = cellTopText + "..." + cellBottomText
         cell.thumbnailImageView?.image = meme.originalImage
-        cell.thumbnailTopText.text = cellTopText
-        cell.thumbnailBottomText.text = cellBottomText
+        cell.thumbnailTopText.attributedText = NSMutableAttributedString(string: cellTopText, attributes: titleTextAttributes)
+        cell.thumbnailBottomText.attributedText = NSMutableAttributedString(string: cellBottomText, attributes: titleTextAttributes)
     
         return cell
     }

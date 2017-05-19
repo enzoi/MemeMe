@@ -193,26 +193,26 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ltQ-vj-epx">
-                                            <rect key="frame" x="20" y="0.0" width="115" height="115"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="115" id="j3e-5Y-aBk"/>
                                                 <constraint firstAttribute="height" constant="115" id="rWg-kY-Lqv"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx3-6L-4yF">
-                                            <rect key="frame" x="56" y="9" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="38.5" y="12" width="37.5" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtJ-du-tU1">
-                                            <rect key="frame" x="56" y="85" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="38.5" y="85" width="37.5" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kA-JR-BDE">
-                                            <rect key="frame" x="155" y="47" width="188" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meme Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kA-JR-BDE">
+                                            <rect key="frame" x="135" y="47" width="232" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -220,11 +220,11 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="cx3-6L-4yF" firstAttribute="centerX" secondItem="ltQ-vj-epx" secondAttribute="centerX" id="8Bw-Mf-04N"/>
-                                        <constraint firstItem="ltQ-vj-epx" firstAttribute="leading" secondItem="UjB-Ql-ypC" secondAttribute="leading" constant="20" id="ABA-Y3-b2B"/>
+                                        <constraint firstItem="ltQ-vj-epx" firstAttribute="leading" secondItem="UjB-Ql-ypC" secondAttribute="leading" id="ABA-Y3-b2B"/>
                                         <constraint firstItem="4kA-JR-BDE" firstAttribute="top" secondItem="UjB-Ql-ypC" secondAttribute="topMargin" constant="39" id="Hp4-o5-q5m"/>
                                         <constraint firstItem="4kA-JR-BDE" firstAttribute="centerY" secondItem="ltQ-vj-epx" secondAttribute="centerY" id="MgZ-dc-VVm"/>
                                         <constraint firstItem="ltQ-vj-epx" firstAttribute="top" secondItem="UjB-Ql-ypC" secondAttribute="top" id="Yrj-Uy-pap"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="4kA-JR-BDE" secondAttribute="trailing" constant="24" id="a5U-XU-mqO"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="4kA-JR-BDE" secondAttribute="trailing" id="a5U-XU-mqO"/>
                                         <constraint firstAttribute="bottom" secondItem="ltQ-vj-epx" secondAttribute="bottom" constant="-0.5" id="aJf-DM-adL"/>
                                         <constraint firstItem="dtJ-du-tU1" firstAttribute="top" secondItem="ltQ-vj-epx" secondAttribute="bottom" constant="-30" id="aTK-pF-Egr"/>
                                         <constraint firstItem="4kA-JR-BDE" firstAttribute="leading" secondItem="ltQ-vj-epx" secondAttribute="trailing" constant="20" id="aZI-lz-zLU"/>
