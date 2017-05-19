@@ -15,6 +15,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var shareImageButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
@@ -76,6 +77,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             cancelButton.isEnabled = false
         } else {
             cancelButton.isEnabled = true
+        }
+        
+        if imagePickerView.image == nil {
+            shareImageButton.isEnabled = false
+        } else {
+            shareImageButton.isEnabled = true
         }
         
     }
