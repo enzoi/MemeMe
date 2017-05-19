@@ -14,6 +14,13 @@ class MemeCollectionVC: UICollectionViewController {
 
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
+    let titleTextAttributes: [String:Any] = [
+        NSForegroundColorAttributeName: UIColor.white,
+        NSFontAttributeName: UIFont(name: "impact", size: 15)!,
+        NSStrokeColorAttributeName: UIColor.black,
+        NSStrokeWidthAttributeName: -3.6,
+        ]
+    
     var memes = [Meme]()
     
     override func viewDidLoad() {
@@ -60,9 +67,24 @@ class MemeCollectionVC: UICollectionViewController {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! MemeCollectionViewCell
         let meme = self.memes[(indexPath as NSIndexPath).row]
+        var cellTopText = meme.topText
+        var cellBottomText = meme.bottomText
+        
+        // Set the name and image
+        if cellTopText == "" {
+            cellTopText = "TOP"
+        }
+        
+        if cellBottomText == "" {
+            cellBottomText = "BOTTOM"
+        }
+        
+        cell.thumbnailImageView?.image = meme.originalImage
+        cell.thumbnailTopText.attributedText = NSMutableAttributedString(string: cellTopText, attributes: titleTextAttributes)
+        cell.thumbnailBottomText.attributedText = NSMutableAttributedString(string: cellBottomText, attributes: titleTextAttributes)
         
         // Set the collection view image
-        cell.imageView?.image = meme.memedImage
+        cell.thumbnailImageView?.image = meme.originalImage
     
         return cell
     }
