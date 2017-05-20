@@ -33,13 +33,31 @@ class MemeCollectionVC: UICollectionViewController {
         // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "collectionViewCell")
 
         // Do any additional setup after loading the view.
+        flowLayoutSetup()
+    }
+    
+    func flowLayoutSetup() {
+        
         let space:CGFloat = 3.0
-        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+        var dimension:CGFloat
+
+        if view.frame.size.height > view.frame.size.width { // portrait
+            dimension = (view.frame.size.width - (2 * space)) / 3.0
+        } else { // landscape
+            dimension = (view.frame.size.width - (4 * space)) / 5.0
+        }
         
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        flowLayoutSetup()
+    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false

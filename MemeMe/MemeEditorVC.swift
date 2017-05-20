@@ -72,12 +72,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             cameraButton.isEnabled = false
         }
         
-        // The Cancel button is disabled when there is no memes in the app
-        if currentMeme == nil {
-            cancelButton.isEnabled = false
-        } else {
-            cancelButton.isEnabled = true
-        }
+//        // The Cancel button is disabled when there is no memes in the app
+//        if currentMeme == nil {
+//            cancelButton.isEnabled = false
+//        } else {
+//            cancelButton.isEnabled = true
+//        }
         
         if imagePickerView.image == nil {
             shareImageButton.isEnabled = false
@@ -93,8 +93,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         unsubscribeFromKeyboardNotifications()
         self.tabBarController?.tabBar.isHidden = false
         
+        // reset editor view
         self.currentMeme = nil
-        
         prepareTextField(textField: topTextField, defaultText: "TOP")
         prepareTextField(textField: bottomTextField, defaultText: "BOTTOM")
         
