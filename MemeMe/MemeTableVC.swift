@@ -89,7 +89,7 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         self.navigationController!.pushViewController(detailController, animated: true)
     }
     
-    // swipe to delete function
+    // swipe to delete function(code below created based on the solution from Andrew Bancroft's blog - https://www.andrewcbancroft.com/2015/07/16/uitableview-swipe-to-delete-workflow-in-swift/)
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             deleteMemeIndexPath = indexPath as NSIndexPath
