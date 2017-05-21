@@ -28,7 +28,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     var imagePicker: UIImagePickerController!
     var memes = [Meme]()
-    var currentMeme: Meme?
     var selectedIndex: Int?
     
     override func viewDidLoad() {
@@ -47,7 +46,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         textField.textAlignment = .center
     }
     
-    // Hide Status Bar
+    // hide Status Bar
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -59,26 +58,20 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         self.tabBarController?.tabBar.isHidden = true
         
         // populate editor when a meme sent from MemeDetailVC
-        if self.currentMeme != nil {
-            self.topTextField.text = currentMeme?.topText
-            self.imagePickerView.image = currentMeme?.originalImage
-            self.bottomTextField.text = currentMeme?.bottomText
+        if self.selectedIndex != nil {
+            self.topTextField.text = self.memes[selectedIndex!].topText
+            self.imagePickerView.image = self.memes[selectedIndex!].originalImage
+            self.bottomTextField.text = self.memes[selectedIndex!].bottomText
         }
         
-        // The Camera button is disabled when app is run on devices without a camera, such as the simulator
+        // the camera button is disabled when app is run on devices without a camera, such as the simulator
         if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
             cameraButton.isEnabled = true
         } else {
             cameraButton.isEnabled = false
         }
         
-//        // The Cancel button is disabled when there is no memes in the app
-//        if currentMeme == nil {
-//            cancelButton.isEnabled = false
-//        } else {
-//            cancelButton.isEnabled = true
-//        }
-        
+        // share image button is disabled when there is no image selected from album or camera
         if imagePickerView.image == nil {
             shareImageButton.isEnabled = false
         } else {
@@ -92,12 +85,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
         self.tabBarController?.tabBar.isHidden = false
-        
-        // reset editor view
-        self.currentMeme = nil
-        prepareTextField(textField: topTextField, defaultText: "TOP")
-        prepareTextField(textField: bottomTextField, defaultText: "BOTTOM")
-        
+
     }
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
@@ -160,6 +148,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         if bottomTextField.isFirstResponder {
             view.frame.origin.y = 0
         }
+        
     }
     
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
@@ -209,17 +198,18 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         var memedImage: UIImage?
         
         func save() {
-            // Create the meme
+            // create a meme by using Meme model
             let meme = Meme(topText: topTextField.text!,
                             bottomText: bottomTextField.text!,
                             originalImage: imagePickerView.image!,
                             memedImage: memedImage)
             
-            // Add to memes list when the meme is created in the editor not sent from detailVC
-            if self.selectedIndex == nil { // new meme
+            // add the saved meme to memes array or replace it with the edited meme
+            if self.selectedIndex == nil {
+                // new meme added to memes array
                 self.memes.append(meme)
             } else {
-                // get array index to replace existing meme
+                // replace existing meme when the meme is sent from detailVC for editing
                 self.memes[selectedIndex!] = meme
             }
         }
@@ -229,23 +219,21 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             memedImage = generateMemedImage()
             
             let activityViewController = UIActivityViewController(activityItems: [ memedImage! ], applicationActivities: nil)
+            
             // present the view controller
             present(activityViewController, animated: true, completion: nil)
             
             activityViewController.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
                 if (completed) {
                     save()
-                    // self.dismiss(animated: true, completion: nil)
                     
-                    // Get the storyboard and TabBar Controller
+                    // get the storyboard and tab bar controller
                     let tabBarController = self.getTabBarController()
                     
-                    // programmatically push view controller
+                    // programmatically push tab bar controller
                     self.present(tabBarController, animated: true, completion: nil)
                 }
-                
             }
-            
             
         } else {
             
@@ -264,15 +252,16 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         
-        // Go back to Tab Bar controller
+        // go back to tab bar controller
         let tabBarController = getTabBarController()
         
-        // programmatically push view controller
+        // programmatically push tab bar controller
         self.present(tabBarController, animated: true, completion: nil)
     }
     
-    // get Tab Bar Controller
+    // get tab bar controller with table view controller and collection view controller
     func getTabBarController() -> UITabBarController {
+        
         let storyboard = UIStoryboard (name: "Main", bundle: nil)
         let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
         
@@ -289,6 +278,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         tabBarController.tabBar.items![1].image = UIImage(named: "collection_30x30")
         
         return tabBarController
+        
     }
 
 }

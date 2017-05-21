@@ -26,12 +26,6 @@ class MemeCollectionVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "collectionViewCell")
-
         // Do any additional setup after loading the view.
         flowLayoutSetup()
     }
@@ -41,9 +35,9 @@ class MemeCollectionVC: UICollectionViewController {
         let space:CGFloat = 3.0
         var dimension:CGFloat
 
-        if view.frame.size.height > view.frame.size.width { // portrait
+        if view.frame.size.height > view.frame.size.width { // portrait mode
             dimension = (view.frame.size.width - (2 * space)) / 3.0
-        } else { // landscape
+        } else { // landscape mode
             dimension = (view.frame.size.width - (4 * space)) / 5.0
         }
         
@@ -57,27 +51,19 @@ class MemeCollectionVC: UICollectionViewController {
         super.viewDidLayoutSubviews()
         flowLayoutSetup()
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
     }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        self.tabBarController?.tabBar.isHidden = true
-//    }
-
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return memes.count
     }
 
@@ -89,7 +75,7 @@ class MemeCollectionVC: UICollectionViewController {
         var cellTopText = meme.topText
         var cellBottomText = meme.bottomText
         
-        // Set the name and image
+        // set the name and image
         if cellTopText == "" {
             cellTopText = "TOP"
         }
@@ -102,7 +88,7 @@ class MemeCollectionVC: UICollectionViewController {
         cell.thumbnailTopText.attributedText = NSMutableAttributedString(string: cellTopText, attributes: titleTextAttributes)
         cell.thumbnailBottomText.attributedText = NSMutableAttributedString(string: cellBottomText, attributes: titleTextAttributes)
         
-        // Set the collection view image
+        // set the collection view image
         cell.thumbnailImageView?.image = meme.originalImage
     
         return cell

@@ -36,12 +36,6 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
 
@@ -50,16 +44,10 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         self.tabBarController?.tabBar.isHidden = false
     
     }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        self.tabBarController?.tabBar.isHidden = true
-//    }
-    
 
     // MARK: - Table view data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return memes.count
     }
 
@@ -101,6 +89,7 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         self.navigationController!.pushViewController(detailController, animated: true)
     }
     
+    // swipe to delete function
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             deleteMemeIndexPath = indexPath as NSIndexPath
@@ -110,7 +99,7 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     }
     
     func confirmDelete(meme: Meme) {
-        let alert = UIAlertController(title: "Delete Meme", message: "Are you sure you want to permanently delete the meme?", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Delete Meme", message: "Are you sure you want to permanently delete the selected meme?", preferredStyle: .actionSheet)
         
         let DeleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: handleDeleteMeme)
         let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: cancelDeleteMeme)

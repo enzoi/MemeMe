@@ -35,9 +35,7 @@ class MemeDetailVC: UIViewController {
         let editorVC = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorVC
         // pass data
         editorVC.memes = self.memes
-        editorVC.currentMeme = self.meme
         editorVC.selectedIndex = self.selectedIndex
-        print(self.memes, self.meme, self.selectedIndex)
         
         self.navigationController!.pushViewController(editorVC, animated: true)
     }
