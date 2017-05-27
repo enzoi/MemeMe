@@ -102,14 +102,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="cUG-UH-Kw1">
                             <connections>
-                                <action selector="cancelButtonTapped:" destination="BYZ-38-t0r" id="iIg-XJ-1Ou"/>
+                                <action selector="cancelButtonTapped:" destination="BYZ-38-t0r" id="ckg-iH-WPx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="XHh-nr-77Z" id="Ctp-AX-Kuu"/>
                         <outlet property="cameraButton" destination="kux-LL-xOk" id="qDf-k0-w9L"/>
-                        <outlet property="cancelButton" destination="cUG-UH-Kw1" id="Jaw-Tk-jJa"/>
                         <outlet property="imagePickerView" destination="Zah-CB-qkq" id="g6u-a4-7P2"/>
                         <outlet property="shareImageButton" destination="hjY-bi-mGW" id="0hs-el-89I"/>
                         <outlet property="toolBar" destination="AHz-sU-iU3" id="ClE-1M-w8X"/>
@@ -118,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="565.60000000000002" y="138.98050974512745"/>
+            <point key="canvasLocation" x="5193" y="206"/>
         </scene>
         <!--MemeCollectionVC-->
         <scene sceneID="XGE-8E-IFG">
@@ -338,12 +337,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFx-6v-IxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-151" y="139"/>
+            <point key="canvasLocation" x="4476" y="206"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Meme Tab Bar Controller-->
         <scene sceneID="p8m-Sc-6oV">
             <objects>
-                <tabBarController storyboardIdentifier="tabBarController" automaticallyAdjustsScrollViewInsets="NO" id="yVk-a9-86H" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" automaticallyAdjustsScrollViewInsets="NO" id="yVk-a9-86H" customClass="MemeTabBarController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="WbD-4e-KuA">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

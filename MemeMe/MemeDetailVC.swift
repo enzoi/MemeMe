@@ -19,6 +19,12 @@ class MemeDetailVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+//        if (movetoroot) {
+//            _ = navigationController?.popToRootViewController(animated: true)
+//        } else {
+//            _ = navigationController?.popViewController(animated: true)
+//        }
+        
         self.tabBarController?.tabBar.isHidden = true
         // present meme image
         self.imageView!.image = self.meme.memedImage
@@ -37,7 +43,12 @@ class MemeDetailVC: UIViewController {
         editorVC.memes = self.memes
         editorVC.selectedIndex = self.selectedIndex
         
-        self.navigationController!.pushViewController(editorVC, animated: true)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(editorVC.cancelButtonTapped(_:)))
+        editorVC.navigationItem.rightBarButtonItem  = cancelButton
+        let navController = UINavigationController(rootViewController: editorVC)
+        
+        // show MemeEditorVC modally
+        self.present(navController, animated: true, completion: nil)
     }
     
 }

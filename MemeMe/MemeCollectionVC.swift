@@ -54,6 +54,12 @@ class MemeCollectionVC: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+        
+        if let tabBarController = self.tabBarController as? MemeTabBarController {
+            self.memes = tabBarController.memes
+        }
+        
+        collectionView?.reloadData()
     }
 
     // MARK: UICollectionViewDataSource

@@ -42,6 +42,12 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     override func viewWillAppear(_ animated: Bool) {
         
         self.tabBarController?.tabBar.isHidden = false
+        
+        if let tabBarController = self.tabBarController as? MemeTabBarController {
+            self.memes = tabBarController.memes
+        }
+        
+        tableView.reloadData()
     
     }
 
@@ -121,6 +127,10 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
             
             deleteMemeIndexPath = nil
             
+            if let tabBarController = self.tabBarController as? MemeTabBarController {
+                tabBarController.memes = self.memes
+            }
+            
             tableView.endUpdates()
         }
     }
@@ -132,11 +142,15 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     @IBAction func addMemeButtonTapped(_ sender: UIBarButtonItem) {
        
         // present MemeEditorVC with current meme info
-        let editorController = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorVC
+        let editorVC = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorVC
         
-        editorController.memes = self.memes
+        editorVC.memes = self.memes
         
-        self.navigationController!.pushViewController(editorController, animated: true)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(editorVC.cancelButtonTapped(_:)))
+        editorVC.navigationItem.rightBarButtonItem  = cancelButton
+        let navController = UINavigationController(rootViewController: editorVC)
+        
+        self.present(navController, animated: true, completion: nil)
         
     }
 

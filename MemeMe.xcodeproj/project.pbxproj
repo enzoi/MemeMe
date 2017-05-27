@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF17BD4F1ED902BA0027CE2E /* MemeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF17BD4E1ED902BA0027CE2E /* MemeTabBarController.swift */; };
 		CF68B1881EC410790019EBCD /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68B1871EC410790019EBCD /* Meme.swift */; };
 		CFC1EE861EC65D270095829B /* MemeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC1EE851EC65D270095829B /* MemeTableVC.swift */; };
 		CFC1EE881EC65D410095829B /* MemeCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC1EE871EC65D410095829B /* MemeCollectionVC.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF17BD4E1ED902BA0027CE2E /* MemeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTabBarController.swift; sourceTree = "<group>"; };
 		CF68B1871EC410790019EBCD /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		CFC1EE851EC65D270095829B /* MemeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableVC.swift; sourceTree = "<group>"; };
 		CFC1EE871EC65D410095829B /* MemeCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCollectionVC.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				CFF608221EA55725003B0E95 /* AppDelegate.swift */,
 				CFF608241EA55725003B0E95 /* MemeEditorVC.swift */,
 				CFC1EE851EC65D270095829B /* MemeTableVC.swift */,
+				CF17BD4E1ED902BA0027CE2E /* MemeTabBarController.swift */,
 				CFC1EE871EC65D410095829B /* MemeCollectionVC.swift */,
 				CFC1EE8D1EC7FD440095829B /* MemeCollectionViewCell.swift */,
 				CFC1EE8F1EC8FD710095829B /* MemeDetailVC.swift */,
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF68B1881EC410790019EBCD /* Meme.swift in Sources */,
+				CF17BD4F1ED902BA0027CE2E /* MemeTabBarController.swift in Sources */,
 				CFF608251EA55725003B0E95 /* MemeEditorVC.swift in Sources */,
 				CFC1EE8E1EC7FD440095829B /* MemeCollectionViewCell.swift in Sources */,
 				CFC1EE881EC65D410095829B /* MemeCollectionVC.swift in Sources */,

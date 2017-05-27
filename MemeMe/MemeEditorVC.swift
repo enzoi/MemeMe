@@ -226,12 +226,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             activityViewController.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
                 if (completed) {
                     save()
+
+                    if let tabBarController = self.presentingViewController as? MemeTabBarController {
+                        tabBarController.memes = self.memes
+                    }
                     
-                    // get the storyboard and tab bar controller
-                    let tabBarController = self.getTabBarController()
-                    
-                    // programmatically push tab bar controller
-                    self.present(tabBarController, animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
             
@@ -250,14 +250,14 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     }
     
+
     @IBAction func cancelButtonTapped(_ sender: Any) {
         
-        // go back to tab bar controller
-        let tabBarController = getTabBarController()
-        
-        // programmatically push tab bar controller
-        self.present(tabBarController, animated: true, completion: nil)
+        print("got here")
+        dismiss(animated: false, completion: nil)
+
     }
+
     
     // get tab bar controller with table view controller and collection view controller
     func getTabBarController() -> UITabBarController {
