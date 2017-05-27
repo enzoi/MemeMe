@@ -85,7 +85,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
         self.tabBarController?.tabBar.isHidden = false
-
+        
     }
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {

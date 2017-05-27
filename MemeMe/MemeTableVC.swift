@@ -146,7 +146,11 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        if segue.identifier == "showEditor" {
+            let controller = segue.destination as! UINavigationController
+            let editor = controller.topViewController as! MemeEditorVC
+            editor.memes = self.memes
+        }
     }
 
 }

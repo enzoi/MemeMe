@@ -123,7 +123,10 @@ class MemeCollectionVC: UICollectionViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "showEditor" {
+            let controller = segue.destination as! MemeEditorVC
+            controller.memes = self.memes
+        }
     }
 
 }

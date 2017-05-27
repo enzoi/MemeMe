@@ -22,13 +22,19 @@ class MemeDetailVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         // present meme image
         self.imageView!.image = self.meme.memedImage
+
+        print(selectedIndex)
+        // dismiss detailVC if it came from editorVC
+        if selectedIndex == nil {
+            _ = navigationController?.popToRootViewController(animated: true)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        navigationController?.popToRootViewController(animated: true)
         
-        _ = navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
@@ -39,9 +45,9 @@ class MemeDetailVC: UIViewController {
         editorVC.memes = self.memes
         editorVC.selectedIndex = self.selectedIndex
 
-        let navController = UINavigationController(rootViewController: editorVC)
+        let controller = UINavigationController(rootViewController: editorVC)
         
-        present(navController, animated: true, completion: nil)
+        present(controller, animated: true, completion: nil)
     }
     
 }
