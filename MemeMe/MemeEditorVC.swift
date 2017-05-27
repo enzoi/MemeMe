@@ -229,9 +229,11 @@ UINavigationControllerDelegate, UITextFieldDelegate {
 
                     if let tabBarController = self.presentingViewController as? MemeTabBarController {
                         tabBarController.memes = self.memes
+
+                        self.dismiss(animated: true, completion: nil)
+                        
                     }
-                    
-                    self.dismiss(animated: true, completion: nil)
+
                 }
             }
             

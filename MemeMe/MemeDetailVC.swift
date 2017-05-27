@@ -19,12 +19,6 @@ class MemeDetailVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        if (movetoroot) {
-//            _ = navigationController?.popToRootViewController(animated: true)
-//        } else {
-//            _ = navigationController?.popViewController(animated: true)
-//        }
-        
         self.tabBarController?.tabBar.isHidden = true
         // present meme image
         self.imageView!.image = self.meme.memedImage
@@ -33,6 +27,8 @@ class MemeDetailVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        
+        _ = navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
