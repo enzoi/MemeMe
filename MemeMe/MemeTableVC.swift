@@ -141,17 +141,12 @@ class MemeTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
 
     @IBAction func addMemeButtonTapped(_ sender: UIBarButtonItem) {
        
-        // present MemeEditorVC with current meme info
-        let editorVC = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorVC
+        performSegue(withIdentifier: "showEditor", sender: self)
         
-        editorVC.memes = self.memes
-        
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(editorVC.cancelButtonTapped(_:)))
-        editorVC.navigationItem.rightBarButtonItem  = cancelButton
-        let navController = UINavigationController(rootViewController: editorVC)
-        
-        self.present(navController, animated: true, completion: nil)
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
     }
 
 }

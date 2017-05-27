@@ -28,11 +28,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Zah-CB-qkq">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHz-sU-iU3">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="574" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3TB-3P-lyG"/>
                                 </constraints>
@@ -54,7 +54,7 @@
                                 <color key="barTintColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XHh-nr-77Z">
-                                <rect key="frame" x="16" y="527" width="343" height="40"/>
+                                <rect key="frame" x="16" y="478" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="oIx-eh-k2D"/>
                                 </constraints>
@@ -102,7 +102,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="cUG-UH-Kw1">
                             <connections>
-                                <action selector="cancelButtonTapped:" destination="BYZ-38-t0r" id="ckg-iH-WPx"/>
+                                <action selector="cancelButtonTapped:" destination="BYZ-38-t0r" id="hL7-eo-5Ax"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -185,6 +185,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sx9-pl-Lue">
                             <connections>
                                 <action selector="addMemeButtonTapped:" destination="9f7-Eu-yIz" id="eIb-uZ-M5a"/>
+                                <segue destination="ZGF-Nz-Tft" kind="show" id="frC-H1-xui"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -271,6 +272,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7Ub-26-ztD">
                             <connections>
                                 <action selector="addMemeButtonTapped:" destination="auw-co-x0w" id="pWN-JX-mtI"/>
+                                <segue destination="ZGF-Nz-Tft" kind="show" identifier="showEditor" id="kQc-BN-kCa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -337,7 +339,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFx-6v-IxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4476" y="206"/>
+            <point key="canvasLocation" x="4466" y="183"/>
         </scene>
         <!--Meme Tab Bar Controller-->
         <scene sceneID="p8m-Sc-6oV">
@@ -403,4 +405,7 @@
         <image name="collection_30x30" width="30" height="30"/>
         <image name="table_30x30" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="kQc-BN-kCa"/>
+    </inferredMetricsTieBreakers>
 </document>

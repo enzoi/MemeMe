@@ -118,12 +118,11 @@ class MemeCollectionVC: UICollectionViewController {
     
     @IBAction func addMemeButtonTapped(_ sender: UIBarButtonItem) {
         
-        // present MemeEditorVC with current meme info
-        let editorController = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorVC
+        performSegue(withIdentifier: "showEditor", sender: self)
         
-        editorController.memes = self.memes
-        
-        self.navigationController!.pushViewController(editorController, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     }
 

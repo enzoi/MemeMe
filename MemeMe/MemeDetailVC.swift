@@ -35,16 +35,13 @@ class MemeDetailVC: UIViewController {
         
         // present MemeEditorVC with current meme info
         let editorVC = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorVC") as! MemeEditorVC
-        // pass data
+
         editorVC.memes = self.memes
         editorVC.selectedIndex = self.selectedIndex
-        
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(editorVC.cancelButtonTapped(_:)))
-        editorVC.navigationItem.rightBarButtonItem  = cancelButton
+
         let navController = UINavigationController(rootViewController: editorVC)
         
-        // show MemeEditorVC modally
-        self.present(navController, animated: true, completion: nil)
+        present(navController, animated: true, completion: nil)
     }
     
 }

@@ -252,36 +252,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     }
     
-
     @IBAction func cancelButtonTapped(_ sender: Any) {
         
-        print("got here")
-        dismiss(animated: false, completion: nil)
-
-    }
-
-    
-    // get tab bar controller with table view controller and collection view controller
-    func getTabBarController() -> UITabBarController {
-        
-        let storyboard = UIStoryboard (name: "Main", bundle: nil)
-        let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-        
-        let memeTableVC = storyboard.instantiateViewController(withIdentifier: "MemeTableVC") as! MemeTableVC
-        let memeCollectionVC = storyboard.instantiateViewController(withIdentifier: "MemeCollectionVC") as! MemeCollectionVC
-        
-        memeTableVC.memes = self.memes
-        memeCollectionVC.memes = self.memes
-        
-        let viewControllerList = [ memeTableVC, memeCollectionVC ]
-        
-        tabBarController.viewControllers = viewControllerList.map { UINavigationController(rootViewController: $0) }
-        tabBarController.tabBar.items![0].image = UIImage(named: "table_30x30")
-        tabBarController.tabBar.items![1].image = UIImage(named: "collection_30x30")
-        
-        return tabBarController
+        dismiss(animated: true, completion: nil)
         
     }
+
 
 }
 
