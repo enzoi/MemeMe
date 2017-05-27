@@ -65,7 +65,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         }
         
         // the camera button is disabled when app is run on devices without a camera, such as the simulator
-        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
+        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
             cameraButton.isEnabled = true
         } else {
             cameraButton.isEnabled = false
@@ -85,6 +85,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
         self.tabBarController?.tabBar.isHidden = false
+        self.selectedIndex = nil
         
     }
     
@@ -112,7 +113,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         imagePickerView.image = image
-        
+
         imagePicker.dismiss(animated: true, completion: nil)
     }
     

@@ -23,7 +23,6 @@ class MemeDetailVC: UIViewController {
         // present meme image
         self.imageView!.image = self.meme.memedImage
 
-        print(selectedIndex)
         // dismiss detailVC if it came from editorVC
         if selectedIndex == nil {
             _ = navigationController?.popToRootViewController(animated: true)
